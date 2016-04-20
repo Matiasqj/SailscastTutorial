@@ -14,7 +14,7 @@ module.exports = {
 
   	},
   	title:{
-
+      type: 'string'
   	},
   	email:{
   		type: 'string',
