@@ -6,32 +6,33 @@
   
 
 
-    <form class="col s12">
+    <form class="col s12" action = "/user/create" method = "post">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="name" type="text" class="validate">
+          <input placeholder="Placeholder" id="name" type="text" class="validate" name="name">
           <label for="name">Username</label>
         </div>
       </div>
        <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="title" type="text" class="validate">
+          <input placeholder="Placeholder" id="title" type="text" class="validate" name="title">
           <label for="title">Title</label>
         </div>
       </div>
-      <div class="row">
+       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input id="email" type="email" class="validate" name="email">
           <label for="email">Email</label>
         </div>
       </div>
-      <input type="submit" class="waves-effect waves-light btn-large" value="Crear cuenta"/>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="text" class="validate" name="encryptedPassword">
+          <label for="password">Password</label>
+        </div>
+      </div>
+     
+      <button type="submit" class="waves-effect waves-light btn-large" value="Crear cuenta"> Enviar </button>
       <input type="hidden" name="_csrf" value="<%= _csrf%>"/>
     </form>
   
