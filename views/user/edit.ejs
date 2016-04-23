@@ -1,21 +1,13 @@
-
-  <div class= "container-center">
-  	<br>
-
-
-  
-
-
-    <form class="col s12" action = "/user/create" method = "post">
+ <form class="col s12" action = "/user/update/<%= user.id %>" method = "post">
 <% if(flash && flash.err){ %>
   <% Object.keys(flash.err).forEach(function(error){ %>
   <li><%= JSON.stringify(flash.err[error])%></li>
   <%})%>
 </ul>
 <% } %>
-
-
-
+  <br>
+    <h6> Editing a User</h6>
+<br>
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Placeholder" id="name" type="text" class="validate" name="name">
@@ -44,6 +36,3 @@
       <button type="submit" class="waves-effect waves-light btn-large" value="Crear cuenta"> Enviar </button>
       <input type="hidden" name="_csrf" value="<%= _csrf%>"/>
     </form>
-  
-  <br>
-  </div>      

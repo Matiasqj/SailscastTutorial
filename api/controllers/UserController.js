@@ -35,7 +35,38 @@ module.exports = {
 			res.view({user:user});
 		});
 
-	}
+	},
+	view: function(req,res,next){
+		User.find(function foundUsers(err,users){
+			if(err) return next(err);
+			res.view({users:users});
+		});
+
+	},
+	//dos partes para editar
+	//la primera es cargar la accion edit cuando se envia el submit
+	edit: function(req,res,next){
+		User.findOne(req.param('id'), function foundUSer(err,user){
+			if(err) return next(err);
+			if(!user) return next();
+			res.view({
+				user:user
+			});
+
+		});
+	},
+	//la segunda es realizar el update
+	update: function(req,res,next){
+		User.update(req.param('id'), req.allParams(), function userUPdated(err){
+			if(err){
+				return res.redirect('/user/edit/'+ req.param('id'));
+			}
+			res.redirect('user/show/'+req.param('id'));
+		});
+	},
+	//delete: function(req,res,next){},
+
+
 
 
 };
