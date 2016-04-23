@@ -6,7 +6,8 @@
  */
 
 module.exports = {
-
+  //con schema solo guarda los atributos del modelo y no guarda los valores que no son del schema
+  schema:true,
   attributes: {
   	name:{
   		type: 'string',
@@ -23,8 +24,17 @@ module.exports = {
   		unique:true
   	},
   	encryptedPassword:{
-		type: 'string'
-  	}
-  }
+		type: 'string',
+    required:true
+  	},
+ /*
+toJSON: function(){
+  var obj= this.toObject();
+  delete obj.encryptedPassword;
+  delete obj._csrf;
+  return obj;
+
+}*/
+ }
 };
 

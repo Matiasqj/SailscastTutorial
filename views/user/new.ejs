@@ -7,6 +7,15 @@
 
 
     <form class="col s12" action = "/user/create" method = "post">
+<% if(flash && flash.err){ %>
+  <% Object.keys(flash.err).forEach(function(error){ %>
+  <li><% JSON.stringify(flash.err[error])%></li>
+  <%})%>
+</ul>
+<% } %>
+
+
+
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Placeholder" id="name" type="text" class="validate" name="name">
