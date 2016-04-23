@@ -8,9 +8,9 @@
 module.exports = {
 	'new': function (req,res){
 		//res locals dura por el tiempo de la vista
-		res.locals.flash = _.clone(req.session.flash);
+	
 		res.view();
-		req.session.flash={};
+		
 
 	},
 	create: function(req,res,next){
