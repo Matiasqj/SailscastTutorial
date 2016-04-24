@@ -23,7 +23,8 @@ module.exports = {
 			}
 			//res.json(user);
 			req.session.flash={};
-			req.session.email = user.name;
+			req.session.authenticated=true;
+			req.session.User=user;
 			res.redirect('/user/show/'+user.id);
 		});
 
@@ -40,8 +41,8 @@ module.exports = {
 	//vista de todos los usuarios
 	view: function(req,res,next){
 		User.find(function foundUsers(err,users){
-			console.log(new Date());
-			console.log(req.session.authenticated);
+			//console.log(new Date());
+			//console.log(req.session.authenticated);
 			if(err) return next(err);
 			res.view({users:users});
 		});
