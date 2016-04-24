@@ -35,6 +35,13 @@ toJSON: function(){
   return obj;
 
 }*/
+ },
+ beforeCreate: function(values,next){
+  require('bcryptjs').hash(values.encryptedPassword,10, function passwordEncrypted(err,encryptedPassword){ 
+    if(err) return next(err);
+    values.encryptedPassword = encryptedPassword;
+    next();
+  });
  }
 };
 
