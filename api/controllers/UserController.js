@@ -30,14 +30,18 @@ module.exports = {
 	},
 	show: function(req, res, next){
 		User.findOne(req.param('id'), function foundUser(err,user){
+
 			if(err) return next(err);
 			if(!user) return next();
 			res.view({user:user});
 		});
 
 	},
+	//vista de todos los usuarios
 	view: function(req,res,next){
 		User.find(function foundUsers(err,users){
+			console.log(new Date());
+			console.log(req.session.authenticated);
 			if(err) return next(err);
 			res.view({users:users});
 		});
